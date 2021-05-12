@@ -1,4 +1,4 @@
-#Laboratório: primeira web app django ⛅
+# Laboratório: primeira web app django ⛅
 
 **OBJECTIVO**: 
 * Neste laboratório criará uma primeira aplicação django simples, para se familiarizar com os conceitos de urls, views, templates e sua linguagem. 
