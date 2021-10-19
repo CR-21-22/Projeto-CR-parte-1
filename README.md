@@ -225,7 +225,8 @@ urlpatterns = [
 2. se houver erros terá notificações que especificarão o erro.
 
 # 9. Repositório GitHub ⛅
-Crie um repositório Github com o seu projeto. Passos:
+
+O GitHub permite criar repositórios onde pode carregar código (veja o [exemplo](https://github.com/teoria-da-computacao/aula-1)). Crie um repositório Github onde armazenará o seu projeto seguindo os passos em baixo:
 * Se não tem conta GitHub, crie uma conta no [GitHub](https://github.com/), com o seu primeiro e ultimo nome. Para saber mais detalhes, explore o [tutorial](https://guides.github.com/activities/hello-world/)
 * crie um repositório público com o nome lab-django-1, clicando em ![image](https://user-images.githubusercontent.com/42048382/137958645-ad941ca1-3955-49f0-ba7e-57cb5db8541c.png)
 * descarregue e instale o [git](www.git-scm.com) no seu PC
@@ -241,7 +242,7 @@ Crie um repositório Github com o seu projeto. Passos:
 > git remote add origin https://github.com/<username_usado_no_git>/<nome_do_repositorio.git> 
 > git push -u origin master 
 ```
-
+* Poderá verificar que todos as pastas e ficheiros do seu projeto agora se encontram disponíveis no seu repositório de GitHub.
 # 10. Gravação de Vídeo demo no Youtube ⛅
 * Grave um vídeo de 30 segundos onde navega no seu website, mostrando as várias páginas. Mostre igualmente o seu código, mostrando o ficheiro urls.py onde estão as rotas, o ficheiro views.py onde estão as várias funções, e os ficheiros HTML que criou, evidenciando a linguagem template usada. 
 * Pode fazer o vídeo usando a aplicação [OBS](https://obsproject.com/pt-br). 
