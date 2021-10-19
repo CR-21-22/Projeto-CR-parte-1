@@ -45,28 +45,38 @@ urlpatterns = [
 ]
 ```
 
-## 3. Templates 🖺
-Designa-se de template um ficheiro HTML retornado  ao browser por uma função view específica, eventualmente renderizado com conteúdos. Começamos assim por construir os conteúdos que teremos para retornar a um cliente. Vamos criar um template base\pai que terá o layout, os restantes consistindo em templates "filhos" que herdam e estendem a base, inserindo conteúdos neste.
+**Nota**: o segundo path especifica `''`, querendo dizer que por defeito será encaminhado para a aplicação diretamente. 
 
-### 3.1 Template base com layout
-1. na pasta `website` crie a pasta `templates`, e dentro dessa a pasta `/website`, ficando com o caminho `lab6/website/templates/website`
-1. Crie, na pasta `website/templates/website`, o ficheiro `base.html`, usando o snippet HTML5 sugerido pelo Pycharm. 
-1. integre no elemento `head` um link para o bootstrap, `<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">`. 
+## 3. Templates 🖺
+Designa-se de template um ficheiro HTML retornado  ao browser por uma função view específica da `views.py`, eventualmente renderizado com conteúdos. Começamos assim por construir os conteúdos que teremos para retornar a um cliente. Vamos criar um template base\pai que terá o layout, os restantes consistindo em templates "filhos" que herdam e estendem o layout base, inserindo conteúdos neste.
+
+### 3.1 Layout base
+1. na pasta `website` crie a pasta `templates`, e dentro dessa a pasta `/website`, ficando com o caminho `projeto-django/website/templates/website`
+1. Crie, na pasta `website/templates/website`, o ficheiro `layout.html`, usando o snippet HTML5 sugerido pelo Pycharm. 
+1. USaremos estilos definidos pelo [Bootstrap](https://getbootstrap.com/), que contêm especificação de estilos pa vários tipos de elementos. Integre no elemento `<head>` um link para o bootstrap, `<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">`. 
 2. O layout será inspirado no Bootstrap [jumbotron](https://www.w3schools.com/bootstrap4/bootstrap_jumbotron.asp). Como no head temos especificado um link para a stylesheet do Bootstrap, iremos utilizar várias das suas classes que permitem formatar elementos.
  
-O template base.html que construiremos a seguir terá a seguinte estrutura:
+O template layout.html que construiremos a seguir terá a seguinte estrutura:
 ```html
-<!-- base.html -->
-...
-<body>
-    <header>...</header>
-    <article>
-        <main>...</main>
-        <aside>...</aside>
-    </article>
-    <footer>...</footer>
-</body>
+<!-- layout.html -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    		<title>Website</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	</head>
+	<body>
+	    <header>...</header>
+	    <article>
+		<main>...</main>
+		<aside>...</aside>
+	    </article>
+	    <footer>...</footer>
+	</body>
+</html>
 ```
+**Nota**: `<!-- base.html -->` em HTML é um comentário
 
 As etiquetas `header, article, main, aside, footer` são [etiquetas semânticas](https://www.w3schools.com/html/html5_semantic_elements.asp) do HTML5, que servem de identificadores de blocos que podem ser estilizados com CSS. 
 
@@ -77,8 +87,8 @@ As etiquetas `header, article, main, aside, footer` são [etiquetas semânticas]
     2. um elemento `<nav>` três hiperlinks `<a>` para três páginas que o seu site irá ter, cada com a classe `class="btn btn-info"` que transforma o hiperlink num botão (ficando por exemplo `<a href="" class="btn btn-info">Home</a>)`. A forma de incluir o link em `href` será especificada na secção 7.
 
 #### main
-1. Por baixo do `<header>`, crie uma secção `<article class="container">`, com a classe Bootstrap. O article irá ter dentro dois elementos, o `<main>` e o `<aside>`.
-1. O elemento `main` tem um classe bootstrap que ocupará 6 colunas de largura ([responsive grid](https://www.w3schools.com/css/css_rwd_grid.asp)). Contém uma etiqueta template `{% block main %}` que especifica que este template será estendido com conteúdos templates filhos. 
+1. Por baixo do `<header>`, crie uma secção `<article class="container">`, com a classe Bootstrap. O article irá ter dentro dois elementos, o `<main>` e o `<aside>` (veja a estrutura acima).
+1. O elemento `main` tem um classe bootstrap que ocupará 6 colunas de largura ([responsive grid](https://www.w3schools.com/css/css_rwd_grid.asp)). Contém uma etiqueta template `{% block main %}` (em vez de usarmos a palavra `content`, podemos usar outras) que especifica que este template será estendido com conteúdos templates filhos. 
 ```html
 <!-- base.html -->
 ...
@@ -87,13 +97,14 @@ As etiquetas `header, article, main, aside, footer` são [etiquetas semânticas]
 	{% endblock main %}
 </main>
 ```
+
 1. O elemento `<aside>` terá a mesma classe `<aside class="col-sm-6">`. Dentro deste elemento deverá inserir um elemento `<img>` com uma imagem à sua escolha. A forma como o fazer será explicado mais em baixo.
 
 #### footer
 1. A seguir ao `<header>`crie um elemento `<footer></footer>`, com um texto simples de rodapé. 
 
 ### 3.2 Templates Filhos
-1. Crie três templates HTML que estendam o layout base.html segundo a seguinte sintaxe:
+1. Crie três ficheiros HTML que estendam o layout base.html segundo a seguinte sintaxe:
 
 ```html
 <!-- home.html -->
@@ -112,7 +123,7 @@ As etiquetas `header, article, main, aside, footer` são [etiquetas semânticas]
 ## 4. Static 🖼️
 A pasta static contém ficheiros "estáticos", i.e., imagens, ficheiros CSS e scripts JavaScript. Estes organizam-se em pastas especificas. Usaremos a seguinte estrutura para guardar uma imagem e um ficheiro css:
 ```dos
-lab6
+projeto-django
 └───website
     └───static
         └───website
@@ -166,19 +177,19 @@ from django.shortcuts import render
 def home_page_view(request):
 	return render(request, 'website/home.html')
 ```
-
+1. defina outras funções para as restantes páginas do seu webstie
 
 ## 6. URLS ✉️
-Existem dois ficheiros ficheiros urls. O urls.py da pasta config, responsável por encaminhar um pedido de um recurso à respetiva aplicação (no nosso caso apenas temos uma aplicação, website). E também deverá existir um módulo urls.py na pasta website. Este irá mapear, para um determinado pedido (*request*) de recurso, uma função do ficheiro views.py que tratará desse pedido, preparando e devolvendo o recurso pedido num template HMTL.
+Existem dois ficheiros ficheiros urls. O `urls.py` da pasta `config` (`config\urls.py`), responsável por encaminhar um pedido de um recurso à respetiva aplicação (no nosso caso apenas temos uma aplicação, website). E também deverá existir um módulo `urls.py` na pasta `website` (`website\urls.py`). Este irá mapear, para um determinado pedido (*request*) de recurso, uma função do ficheiro views.py que tratará desse pedido, preparando e devolvendo o recurso pedido num template HMTL.
 
-1. o config/urls.py já está configurado
+1. o config/urls.py já está configurado. Contém rotas para as aplicações existentes dentro do projeto, que configurou em 1.2. 
 
-3. Na pasta website crie o ficheiro `urls.py`. Exemplifica-se em baixo uma rota na lista urlpatterns, devendo incluir uma rota para cada uma das três views anteriormente criadas. 
+3. Na pasta website crie o ficheiro `urls.py`. Este deverá especificar as rotas existentes para os vários  Exemplifica-se em baixo uma rota na lista urlpatterns, devendo incluir uma rota para cada uma das três views anteriormente criadas. 
 
 ```python
 #  hello/urls.py
 
-from django.shortcuts import render
+from django.urls import path
 from . import views
 
 app_name = "website"
@@ -187,7 +198,8 @@ urlpatterns = [
     path('home', views.home_page_view, name='home')
 ]
 ```
-Como se vê, este módulo importa o módulo views que se encontra na mesma pasta (e por isso é importado como `from . import views`), por forma a poder falar das funções view. Importa também a função path, responsavel por mapear a rota (`home`) na função (`views.home_page_view`).
+* Este módulo importa a função `path()`, responsavel por mapear a rota (`home`) na função (`views.home_page_view`).
+* Este módulo importa o módulo `views` que se encontra na mesma pasta (e por isso é importado como `from . import views`), por forma a poder falar das funções view. 
 
 
 ## 7. Hiperlinks 🔗
@@ -195,14 +207,14 @@ Como se vê, este módulo importa o módulo views que se encontra na mesma pasta
 2. Para a imagem `<img>` no ficheiro `base.html`, inclua antes desta a etiqueta template `{% load static %}`, para construir o URL para o path relativo. Na especificação da `src`, use a etiqueta template `{% static 'website/images/image.png' %}`, ficando da seguinte forma:
 
 ```html
-<!-- base.html -->
+<!-- layout.html -->
 ...
 {% load static %}
 <img src="{% static 'website/images/image.png' %}">
 ```
-3. para o ficheiro base.css, devemos também incluir no ficheiro `base.html` um link, usando o path relativo para a pasta static:
+3. para o ficheiro base.css, devemos também incluir no ficheiro `layout.html` um link, usando o path relativo para a pasta static:
 ```html
-<!-- base.html -->
+<!-- layout.html -->
 ...
 {% load static %}
 <link rel="stylesheet" href="{% static 'website/css/base.css' %}">
@@ -211,23 +223,12 @@ Como se vê, este módulo importa o módulo views que se encontra na mesma pasta
 ## 8. Ready... GO! 🏁
 1. Lance a aplicação com o comando `python manage.py runserver` e verifique que consegue visualizar corretamente a aplicação que fez. 
 
-# 9. GitHub e Heroku ⛅
-Execute os seguintes comandos para pôr o seu projeto e app a correr na cloud!
-1. considera-se que tem o Heroku instalado. Na consola, faça login `heroku login`
-2. Instale o servidor gunicorn	`pipenv install gunicorn`
-3. Crie na pasta lab6 o ficheiro `Procfile` (sem qualquer extensão!) com o seguinte conteúdo (que especifica que estamos a usar Gunicorn): `web: gunicorn config.wsgi --log-file -`
-4. em config/settings.py, pôr: `ALLOWED_HOSTS = ['*']` 
-5. fazer push para o github:
-	```
-	git add -A
-	git commit -m "projeto django"
-	git push -u origin master
-	```
-6. criar nova app no Heroku, com nome aleatório com o comando `heroku create`
-7. indicamos para ignorar ficheiros estáticos tais como CSS e JS (os quais Heroku tenta otimizar para nós), com o comando: `heroku config:set DISABLE_COLLECTSTATIC=1`
-8. fazer push do código para o Heroku `git push heroku master`
-9. lançamos a aplicação	`heroku ps:scale web=1`
-10. confirmamos se a app esta online `heroku open`
+# 9. Repositório GitHub e Video ⛅
+* Crie um repositório no github com o seu projeto
+* Grave um vídeo de 30 segundos onde navega no seu website, mostrando as várias páginas. Pode fazê-lo usando a aplicação OBS. Carregue-o para o Youtube e disponibilize-o como público.
+
+# 11. Submissão
+Submeta hiperlink para o seu repositório github e para o Youtube
 
 
-*Esperamos que tenha gostado de conhecer um pouco do funcionamento do django e de ter feito uma web app que já não é estática*
+*Espero que tenha gostado de conhecer um pouco do funcionamento do django e de ter feito uma web app simples*
