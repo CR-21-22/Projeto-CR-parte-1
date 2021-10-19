@@ -7,9 +7,9 @@
 
 **RECOMENDAÇÕES**: 
 * Leia uma vez o enunciado. É extenso, mas detalha todos os passos e fornece o código necessário, sendo rápida a sua realização.
-* Instale e use o Pycharm (preferencialmente a versão profissional, usando as credenciais da universidade) para editar o código de forma fácil. O Pycharm sinaliza os erros. Veja com atenção eventuais mensagens. 
-* quando necessário, guie-se pelo projeto que está no repo.
-* se tiver dúvidas, consulte os slides e a documentação do [djangoproject](https://www.djangoproject.com/)
+* Instale e use o [Pycharm](https://www.jetbrains.com/pycharm/) (preferencialmente a versão profissional, usando as credenciais da universidade; senão, use a Community) para editar o código de forma fácil. O Pycharm sinaliza os erros. Veja com atenção eventuais mensagens. 
+* quando necessário, guie-se pelo projeto e aplicações feitas nas aulas, que estão no repositório [aula-1](https://github.com/teoria-da-computacao/aula-1).
+* se tiver dúvidas, consulte os slides disponíveis no Moodle ou a documentação do [djangoproject](https://www.djangoproject.com/)
 
 ## 1. Primeiros passos 👶
 Vamos nesta secção criar um projeto e aplicação django.
@@ -222,10 +222,30 @@ urlpatterns = [
 
 ## 8. Ready... GO! 🏁
 1. Lance a aplicação com o comando `python manage.py runserver` e verifique que consegue visualizar corretamente a aplicação que fez. 
+2. se houver erros terá notificações que especificarão o erro.
 
-# 9. Repositório GitHub e Video ⛅
-* Crie um repositório no github com o seu projeto
-* Grave um vídeo de 30 segundos onde navega no seu website, mostrando as várias páginas. Pode fazê-lo usando a aplicação OBS. Carregue-o para o Youtube e disponibilize-o como público.
+# 9. Repositório GitHub ⛅
+Crie um repositório Github com o seu projeto. Passos:
+* Se não tem conta GitHub, crie uma conta no [GitHub](https://github.com/), com o seu primeiro e ultimo nome. Para saber mais detalhes, explore o [tutorial](https://guides.github.com/activities/hello-world/)
+* crie um repositório público com o nome lab-django-1, clicando em ![image](https://user-images.githubusercontent.com/42048382/137958645-ad941ca1-3955-49f0-ba7e-57cb5db8541c.png)
+* descarregue e instale o [git](www.git-scm.com) no seu PC
+* abra o PowerShell ou linha de comandos e execute os seguintes comandos para definir a sua identidade para o git:
+```bash
+> git config --global user.name "username_usado_no_git"
+> git config --global user.email "iniciais@meuemail.pt"
+```
+* aceda à pasta do `projeto-django` na linha de comandos e execute os seguintes comandos para carregar para o GitHub o seu projeto: 
+```bash
+> git add * 
+> git commit –m "primeira versao do website" 
+> git remote add origin https://github.com/<username_usado_no_git>/<nome_do_repositorio.git> 
+> git push -u origin master 
+```
+
+# 10. Gravação de Vídeo demo no Youtube ⛅
+* Grave um vídeo de 30 segundos onde navega no seu website, mostrando as várias páginas. Mostre igualmente o seu código, mostrando o ficheiro urls.py onde estão as rotas, o ficheiro views.py onde estão as várias funções, e os ficheiros HTML que criou, evidenciando a linguagem template usada. 
+* Pode fazer o vídeo usando a aplicação [OBS](https://obsproject.com/pt-br). 
+* * Carregue o vídeo para o Youtube (crie uma conta Youtube se necessário) e disponibilize-o como público.
 
 # 11. Submissão
 Submeta hiperlink para o seu repositório github e para o Youtube
