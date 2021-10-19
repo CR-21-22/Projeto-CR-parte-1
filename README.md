@@ -7,16 +7,16 @@
 
 **RECOMENDAÇÕES**: 
 * Leia uma vez o enunciado. É extenso, mas detalha todos os passos e fornece o código necessário, sendo rápida a sua realização.
-* Instale e use o Pycharm para editar o código de forma fácil. O Pycharm sinaliza os erros. Veja com atenção eventuais mensagens. 
+* Instale e use o Pycharm (preferencialmente a versão profissional, usando as credenciais da universidade) para editar o código de forma fácil. O Pycharm sinaliza os erros. Veja com atenção eventuais mensagens. 
 * quando necessário, guie-se pelo projeto que está no repo.
-* se tiver dúvidas, consulte os slides em anexo e a documentação do [djangoproject](https://www.djangoproject.com/)
+* se tiver dúvidas, consulte os slides e a documentação do [djangoproject](https://www.djangoproject.com/)
 
 ## 1. Primeiros passos 👶
 Vamos nesta secção criar um projeto e aplicação django.
 
 ### 1.1. Crie um projeto e app django
 1. Abra a linha de comandos (PowerShell ou cmd) e execute os comandos em baixo a cinzento. 
-1. Crie e entre na pasta lab6 `mkdir lab6; cd lab6`
+1. Crie e entre na pasta projeto-django `mkdir projeto-django; cd projeto-django`
 1. Instale o pipenv executando `pip install pipenv`
 1. Crie um ambiente virtual com django `pipenv install django`
 1. Active o ambiente virtual `pipenv shell`
@@ -27,9 +27,11 @@ Vamos nesta secção criar um projeto e aplicação django.
 1. Crie a aplicação website, com a instrução `python manage.py startapp website`
 
 ### 1.2. Configure a aplicação
-1. abra a pasta com o Pycharm
-1. em config/settings.py registe a aplicação na lista INSTALLED_APPS, colocando no fim `'website'`
-1. em config/urls.py registe a rota para a nova aplicação website, inserindo na lista urlpatterns o caminho `path('', include('website.urls))` para a sua aplicação, ficando:
+1. abra a pasta `projeto-django` com o Pycharm 
+    * botão direito sobre a pasta, e escolha lançar com Pycharm
+    * abra o Pycharm e abra a pasta `projeto-django` 
+3. em config/settings.py registe a aplicação na lista INSTALLED_APPS, colocando no fim `'website'`
+4. em config/urls.py registe a rota para a nova aplicação website, inserindo na lista `urlpatterns` o caminho `path('', include('website.urls))` para a sua aplicação, ficando:
 
 ```python
 # config/urls.py
@@ -65,6 +67,8 @@ O template base.html que construiremos a seguir terá a seguinte estrutura:
     <footer>...</footer>
 </body>
 ```
+
+As etiquetas `header, article, main, aside, footer` são [etiquetas semânticas](https://www.w3schools.com/html/html5_semantic_elements.asp) do HTML5, que servem de identificadores de blocos que podem ser estilizados com CSS. 
 
 #### header
 1. No elemento `<body>` crie aninhado o elemento `<header class="jumbotron text-center">` com as classes Bootstrap jumbotron que evidenciará o cabeçalho do website, e text-center que centrará o texto. Dentro do elemento header deverá ter aninhado três elementos:
