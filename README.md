@@ -1,9 +1,8 @@
 # Laboratório: primeira web app django ⛅
 
 **OBJECTIVO**: 
-* Neste laboratório criará uma primeira aplicação django simples, para se familiarizar com os conceitos de urls, views, templates e sua linguagem. 
-* A ideia é trabalhar a estrutura e dinamicidade. O conteúdo é secundário.
-* Exercitará a edição dos módulos urls.py, views.py e a criação de templates HTML com linguagem template.
+* Neste laboratório criará uma aplicação Django, para se familiarizar com os conceitos de urls, views, templates e sua linguagem assim como manipulação de base de dados.
+* Exercitará a edição dos módulos urls.py, views.py e modules.py.
 
 **RECOMENDAÇÕES**: 
 * Leia uma vez o enunciado. É extenso, mas detalha todos os passos e fornece o código necessário, sendo rápida a sua realização.
@@ -14,23 +13,18 @@
 ## 1. Primeiros passos 👶
 Vamos nesta secção criar um projeto e aplicação django.
 
-### 1.1. Crie um projeto e app django
-1. Abra a linha de comandos (PowerShell ou cmd) e execute os comandos em baixo a cinzento. 
-1. Crie e entre na pasta projeto-django `mkdir projeto-django; cd projeto-django`
-1. Instale o pipenv executando `pip install pipenv`
-1. Crie um ambiente virtual com django `pipenv install django`
-1. Active o ambiente virtual `pipenv shell`
-1. crie um projeto django `django-admin startproject config .`
+### 1.1. Crie um projeto e uma aplicação django
+1. Abra o Pycharm e crie, numa pasta à sua escolha, um novo projeto chamado `core_project` (core de COmplementos de REdes), com ambiente virtual
 1. Migre as base de dados `python manage.py migrate`
 1. Lance o projeto para ver se está tudo ok, com o comando `python manage.py runserver` 
-1. Pare o servidor com Ctrl + C
-1. Crie a aplicação website, com a instrução `python manage.py startapp website`
+1. Pare o servidor com `Ctrl + C`
+1. Crie a aplicação `core_app`, abrindo no Pycharm o terminal e executando  a instrução `python manage.py startapp core_app`
 
 ### 1.2. Configure a aplicação
-1. abra a pasta `projeto-django` com o Pycharm 
+1. abra a pasta `core_project` com o Pycharm 
     * botão direito sobre a pasta, e escolha lançar com Pycharm
-    * abra o Pycharm e abra a pasta `projeto-django` 
-3. em config/settings.py registe a aplicação na lista INSTALLED_APPS, colocando no fim `'website'`
+    * abra o Pycharm e abra a pasta `core_project` 
+3. em config/settings.py registe a aplicação na lista INSTALLED_APPS, colocando no fim `'core_app'`
 4. em config/urls.py registe a rota para a nova aplicação website, inserindo na lista `urlpatterns` o caminho `path('', include('website.urls))` para a sua aplicação, ficando:
 
 ```python
@@ -41,11 +35,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('website.urls')),
+    path('', include('core_app.urls')),
 ]
 ```
 
-**Nota**: o segundo path especifica `''`, querendo dizer que por defeito será encaminhado para a aplicação diretamente. 
+**Nota**: o segundo path especifica `''`, querendo dizer que por defeito será encaminhado diretamente para a aplicação. 
 
 ## 3. Templates 🖺
 Designa-se de template um ficheiro HTML retornado  ao browser por uma função view específica da `views.py`, eventualmente renderizado com conteúdos. Começamos assim por construir os conteúdos que teremos para retornar a um cliente. Vamos criar um template base\pai que terá o layout, os restantes consistindo em templates "filhos" que herdam e estendem o layout base, inserindo conteúdos neste.
@@ -104,7 +98,7 @@ As etiquetas `header, article, main, aside, footer` são [etiquetas semânticas]
 1. A seguir ao `<header>`crie um elemento `<footer></footer>`, com um texto simples de rodapé. 
 
 ### 3.2 Templates Filhos
-1. Crie três ficheiros HTML que estendam o layout base.html segundo a seguinte sintaxe:
+1. Crie 4 ficheiros HTML que estendam o layout base.html segundo a seguinte sintaxe:
 
 ```html
 <!-- home.html -->
@@ -119,6 +113,11 @@ As etiquetas `header, article, main, aside, footer` são [etiquetas semânticas]
 1. Estes terão os conteúdos que irão aparecer no elemento main. 
 2. A única coisa que mudará entre os três elementos será o conteúdo do block main.
 3. Especifica para cada um deles um título texto, duas ou tres frases basta.
+4. Conteúdos:
+    1. Objetivos da UC de complementos de redes (ir buscar à página do Moodle de CR)
+    2. Programa da UC
+    3. Limites fundamentais: explicar o limite de Nyquist e a Capacidade de Shannon (ver slides).
+    4. Lista editável de definições, guardados numa base de dados (descrito mais à frente)
 
 ## 4. Static 🖼️
 A pasta static contém ficheiros "estáticos", i.e., imagens, ficheiros CSS e scripts JavaScript. Estes organizam-se em pastas especificas. Usaremos a seguinte estrutura para guardar uma imagem e um ficheiro css:
@@ -220,11 +219,16 @@ urlpatterns = [
 <link rel="stylesheet" href="{% static 'website/css/base.css' %}">
 ```
 
-## 8. Ready... GO! 🏁
+## 8. Páginas com base de dados 🛢️
+1. Crie uma página que lista o conteúdo de uma base de dados
+2. A base de dados deve guardar um glossário, definições de conceitos chave associados às Redes. Deverá ter dois campos, o tópico e a definição.
+4. Deve existir uma outra página com um formulário que permite registar um tópico e sua definição.
+
+## 9. Ready... GO! 🏁
 1. Lance a aplicação com o comando `python manage.py runserver` e verifique que consegue visualizar corretamente a aplicação que fez. 
 2. se houver erros terá notificações que especificarão o erro.
 
-# 9. Repositório GitHub ⛅
+# 10. Repositório GitHub ⛅
 
 O GitHub permite criar repositórios onde pode carregar código (veja o [exemplo](https://github.com/teoria-da-computacao/aula-1)). Crie um repositório Github onde armazenará o seu projeto seguindo os passos em baixo:
 * Se não tem conta GitHub, crie uma conta no [GitHub](https://github.com/), com o seu primeiro e ultimo nome. Para saber mais detalhes, explore o [tutorial](https://guides.github.com/activities/hello-world/)
@@ -243,7 +247,8 @@ O GitHub permite criar repositórios onde pode carregar código (veja o [exemplo
 > git push -u origin master 
 ```
 * Poderá verificar que todos as pastas e ficheiros do seu projeto agora se encontram disponíveis no seu repositório de GitHub.
-# 10. Gravação de Vídeo demo no Youtube ⛅
+
+# 11. Gravação de Vídeo demo no Youtube ⛅
 * Grave um vídeo de 30 segundos onde navega no seu website, mostrando as várias páginas. Mostre igualmente o seu código, mostrando o ficheiro urls.py onde estão as rotas, o ficheiro views.py onde estão as várias funções, e os ficheiros HTML que criou, evidenciando a linguagem template usada. 
 * Pode fazer o vídeo usando a aplicação [OBS](https://obsproject.com/pt-br). 
 * * Carregue o vídeo para o Youtube (crie uma conta Youtube se necessário) e disponibilize-o como público.
