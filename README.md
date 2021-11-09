@@ -1,8 +1,7 @@
-# Laboratório: primeira web app django ⛅
+# Projeto - Parte 1: web app django de Complementos de Redes ⛅
 
 **OBJECTIVO**: 
-* Neste laboratório criará uma aplicação Django, para se familiarizar com os conceitos de urls, views, templates e sua linguagem assim como manipulação de base de dados.
-* Exercitará a edição dos módulos urls.py, views.py e modules.py.
+* Neste laboratório criará uma aplicação Django sombre Complementos de Redes
 
 **RECOMENDAÇÕES**: 
 * Leia uma vez o enunciado. É extenso, mas detalha todos os passos e fornece o código necessário, sendo rápida a sua realização.
@@ -117,7 +116,7 @@ As etiquetas `header, article, main, aside, footer` são [etiquetas semânticas]
     1. Objetivos da UC de complementos de redes (ir buscar à página do Moodle de CR)
     2. Programa da UC
     3. Limites fundamentais: explicar o limite de Nyquist e a Capacidade de Shannon (ver slides).
-    4. Lista editável de definições, guardados numa base de dados (descrito mais à frente)
+    4. Lista editável de definições de conceitos relacionados com as redes de telecomunicações, guardados numa base de dados (descrito mais à frente)
 
 ## 4. Static 🖼️
 A pasta static contém ficheiros "estáticos", i.e., imagens, ficheiros CSS e scripts JavaScript. Estes organizam-se em pastas especificas. Usaremos a seguinte estrutura para guardar uma imagem e um ficheiro css:
