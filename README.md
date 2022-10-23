@@ -5,8 +5,8 @@
 
 **RECOMENDAÇÕES**: 
 * Leia uma vez o enunciado. É extenso, mas detalha todos os passos e fornece o código necessário, sendo rápida a sua realização.
-* Instale e use o [Pycharm](https://www.jetbrains.com/pycharm/) (preferencialmente a versão profissional, usando as credenciais da universidade; senão, use a Community) para editar o código de forma fácil. O Pycharm sinaliza os erros. Veja com atenção eventuais mensagens. 
-* quando necessário, guie-se pelo projeto e aplicações feitas nas aulas, que estão no repositório [aula-1](https://github.com/teoria-da-computacao/aula-1).
+* Instale e use o VS Code ou o [Pycharm](https://www.jetbrains.com/pycharm/) (preferencialmente a versão profissional, usando as credenciais da universidade; senão, use a Community) para editar o código de forma fácil. Estes editores sinalizam os erros. Veja com atenção eventuais mensagens. 
+* quando necessário, guie-se pelo projeto e aplicações feitas nas aulas, que estão no repositório.
 * se tiver dúvidas, consulte os slides disponíveis no Moodle ou a documentação do [djangoproject](https://www.djangoproject.com/)
 
 ## 1. Primeiros passos 👶
